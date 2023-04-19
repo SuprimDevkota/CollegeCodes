@@ -1,0 +1,29 @@
+Here is a high-level overview of how I would approach this project:
+
+Randomize and display a random string of characters: To generate a random string of characters, you can use the rand() function from the stdlib.h library to generate a
+random integer and then cast it to a char to get a random character. To display the string, you can use the SDL_RenderDrawText() function from the SDL2 library to draw the string to the
+screen.
+
+Count the frequency of each character: To count the frequency of each character, you can create a map (e.g. std::unordered_map in C++ or std::map) that maps each character to its frequency. Then, you can iterate through the string and increment the frequency count for each character in the map.
+
+Construct a Huffman tree: To construct a Huffman tree, you can follow these steps:
+
+	Create a priority queue (e.g. std::priority_queue in C++) of nodes, where each node represents a character and has a frequency attribute.
+
+	Pop the two nodes with the lowest frequencies from the priority queue and create a new node with these two nodes as its children. The frequency of the new node should be the sum
+	of the frequencies of its children.
+
+	Push the new node back into the priority queue.
+
+	Repeat steps 2 and 3 until there is only one node left in the priority queue, which is the root of the Huffman tree.
+
+Traverse the tree and assign each character with variable length 1's and 0's: To traverse the tree and assign each character with a variable length code, you can do a depth-first traversal
+of the tree and use 0 for left child and 1 for right child. When you reach a leaf node (a node that represents a character), you can add the code to a map (e.g. std::unordered_map in C++ or
+std::map) that maps each character to its Huffman code.
+
+Convert the random string of characters to its Huffman code equivalent: To convert the random string of characters to its Huffman code equivalent, you can iterate through the string and
+look up the Huffman code for each character in the map created in step 4.
+
+Show the number of bytes saved after the compression: To show the number of bytes saved after the compression, you can compare the number of bits used to represent the original string and
+the number of bits used to represent the Huffman-encoded string. The difference between these two values is the number of bits saved by using Huffman encoding. You can then divide this
+number by 8 to get the number of bytes saved.
